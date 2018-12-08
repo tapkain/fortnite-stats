@@ -8,8 +8,8 @@ class PlayerStats {
   final int kills;
   final List<Tuple2<int, int>> placetop;
   final int matchesPlayed;
-  final int kd;
-  final int winrate;
+  final double kd;
+  final double winrate;
   final int score;
   final int minutesPlayed;
   final int lastmodified;
@@ -84,8 +84,8 @@ class PlayerStatsTotal {
   final int minutesplayed;
   final int hoursplayed;
   final int score;
-  final int winrate;
-  final int kd;
+  final double winrate;
+  final double kd;
   final int lastupdate;
 
   PlayerStatsTotal({

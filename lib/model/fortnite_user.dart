@@ -1,3 +1,11 @@
+enum FortnitePlatform {
+  pc, xbox, ps4
+}
+
+enum FortniteSeason {
+  alltime, season4, season5, current
+}
+
 class FortniteUser {
   final String uid;
   final String username;
