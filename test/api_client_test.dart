@@ -8,7 +8,7 @@ void main() {
   final client = ApiClient();
   const username = 'Ninja';
   FortniteUser user;
-  
+
   group('Api Client', () {
     test('should fetch user model', () async {
       user = await client.fetchUser(username);
@@ -23,12 +23,13 @@ void main() {
       expect(playerData.username, username);
       expect(playerData.platform, 'pc');
       expect(playerData.window, 'alltime');
-      expect(playerData.totals.kills, 91960);
-      expect(playerData.totals.wins, 4807);
+      expect(playerData.totals.kills, 92040);
+      expect(playerData.totals.wins, 4815);
       expect(playerData.totals.hoursplayed, 835);
-      expect(playerData.totals.kd, 11.1);
+      expect(playerData.totals.kd, 11.11);
 
       final soloStats = playerData.stats.playerStats[PlayerStatsType.solo];
+      print(soloStats);
       expect(soloStats.winrate, 34.75);
       expect(soloStats.score, 1719223);
 

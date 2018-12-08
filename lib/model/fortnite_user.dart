@@ -16,10 +16,10 @@ class FortniteUser {
 
   factory FortniteUser.fromJson(Map<String, dynamic> json) {
     return FortniteUser(
-      uid: json["uid"],
-      username: json["username"],
-      platforms: json["platforms"],
-      seasons: json["seasons"]
+      uid: json['uid'],
+      username: json['username'],
+      platforms: new List<String>.from(json['platforms']),
+      seasons: new List<String>.from(json['seasons'])
     );
   }
 }
