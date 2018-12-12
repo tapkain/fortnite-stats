@@ -8,8 +8,8 @@ class PlayerStats {
   final int kills;
   final List<Tuple2<int, int>> placetop;
   final int matchesPlayed;
-  final double kd;
-  final double winrate;
+  final num kd;
+  final num winrate;
   final int score;
   final int minutesPlayed;
   final int lastmodified;
@@ -29,48 +29,48 @@ class AllPlayerStats {
     return AllPlayerStats(
       playerStats: {
         PlayerStatsType.solo: PlayerStats(
-          kills: json["killsSolo"],
+          kills: json["kills_solo"],
           placetop: [
-            Tuple2(1, json["placetop1Solo"]),
-            Tuple2(10, json["placetop10Solo"]),
-            Tuple2(25, json["placetop25Solo"]),
+            Tuple2(1, json["placetop1_solo"]),
+            Tuple2(10, json["placetop10_solo"]),
+            Tuple2(25, json["placetop25_solo"]),
           ],
-          matchesPlayed: json["matchesPlayedSolo"],
-          kd: json["kdSolo"],
-          winrate: json["winrateSolo"],
-          score: json["scoreSolo"],
-          minutesPlayed: json["minutesPlayedSolo"],
-          lastmodified: json["lastmodifiedSolo"]
+          matchesPlayed: json["matchesplayed_solo"],
+          kd: json["kd_solo"],
+          winrate: json["winrate_solo"],
+          score: json["score_solo"],
+          minutesPlayed: json["minutesplayed_solo"],
+          lastmodified: json["lastmodified_solo"]
         ),
 
         PlayerStatsType.duo: PlayerStats(
-            kills: json["killsDuo"],
+            kills: json["kills_duo"],
             placetop: [
-              Tuple2(1, json["placetop1Duo"]),
-              Tuple2(5, json["placetop5Duo"]),
-              Tuple2(12, json["placetop12Duo"]),
+              Tuple2(1, json["placetop1_duo"]),
+              Tuple2(5, json["placetop5_duo"]),
+              Tuple2(12, json["placetop12_duo"]),
             ],
-            matchesPlayed: json["matchesPlayedDuo"],
-            kd: json["kdDuo"],
-            winrate: json["winrateDuo"],
-            score: json["scoreDuo"],
-            minutesPlayed: json["minutesPlayedDuo"],
-            lastmodified: json["lastmodifiedDuo"]
+            matchesPlayed: json["matchesplayed_dDuo"],
+            kd: json["kd_duo"],
+            winrate: json["winrate_duo"],
+            score: json["score_duo"],
+            minutesPlayed: json["minutesplayed_duo"],
+            lastmodified: json["lastmodified_duo"]
         ),
 
         PlayerStatsType.squad: PlayerStats(
-            kills: json["killsSquad"],
+            kills: json["kills_squad"],
             placetop: [
-              Tuple2(1, json["placetop1Squad"]),
-              Tuple2(3, json["placetop3Squad"]),
-              Tuple2(6, json["placetop6Squad"]),
+              Tuple2(1, json["placetop1_squad"]),
+              Tuple2(3, json["placetop3_squad"]),
+              Tuple2(6, json["placetop6_squad"]),
             ],
-            matchesPlayed: json["matchesPlayedSquad"],
-            kd: json["kdSquad"],
-            winrate: json["winrateSquad"],
-            score: json["scoreSquad"],
-            minutesPlayed: json["minutesPlayedSquad"],
-            lastmodified: json["lastmodifiedSquad"]
+            matchesPlayed: json["matchesplayed_squad"],
+            kd: json["kd_squad"],
+            winrate: json["winrate_squad"],
+            score: json["score_squad"],
+            minutesPlayed: json["minutesplayed_squad"],
+            lastmodified: json["lastmodified_squad"]
         ),
       }
     );
@@ -84,8 +84,8 @@ class PlayerStatsTotal {
   final int minutesplayed;
   final int hoursplayed;
   final int score;
-  final double winrate;
-  final double kd;
+  final num winrate;
+  final num kd;
   final int lastupdate;
 
   PlayerStatsTotal({

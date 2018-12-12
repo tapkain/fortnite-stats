@@ -5,7 +5,7 @@ import 'package:fortnite_stats/model/player_data.dart';
 
 class _FortniteHttpClient extends http.BaseClient {
   final String _baseUrl = 'https://fortnite-public-api.theapinetwork.com/prod09/';
-  final String _apiKey = <your-api-key-here>;
+  final String _apiKey = <API KEY HERE>;
   final http.Client _inner;
 
   _FortniteHttpClient(this._inner);
@@ -47,7 +47,6 @@ class ApiClient {
   factory ApiClient() => _apiClient;
 
   Future<FortniteUser> fetchUser(String username) async {
-    print('pezdec');
     final json = await _client.apiGet('users/id', {'username': username});
     return FortniteUser.fromJson(json);
   }

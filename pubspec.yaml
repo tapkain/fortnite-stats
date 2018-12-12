@@ -21,6 +21,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   http: ^0.11.3+16
   tuple: ^1.0.2
+  scoped_model: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -37,6 +38,14 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/kills.png
+    - assets/kill_death.png
+    - assets/games.png
+    - assets/time.png
+    - assets/score.png
+    - assets/wins.png
+    - assets/anon.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
