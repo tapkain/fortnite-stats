@@ -3,7 +3,7 @@ enum FortnitePlatform {
 }
 
 enum FortniteSeason {
-  alltime, season4, season5, current
+  alltime, season4, season5, season6, season7, current
 }
 
 class FortniteUser {

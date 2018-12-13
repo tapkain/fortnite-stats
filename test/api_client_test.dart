@@ -16,9 +16,7 @@ void main() {
     });
 
     test('should fetch player data', () async {
-      final playerData = await client.fetchPlayerData(
-          user, FortnitePlatform.pc, FortniteSeason.alltime
-      );
+      final playerData = await client.fetchPlayerData(user, 'pc', 'alltime');
       expect(playerData.username, username);
       expect(playerData.platform, 'pc');
       expect(playerData.window, 'alltime');

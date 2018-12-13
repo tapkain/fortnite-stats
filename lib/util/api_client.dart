@@ -5,7 +5,7 @@ import 'package:fortnite_stats/model/player_data.dart';
 
 class _FortniteHttpClient extends http.BaseClient {
   final String _baseUrl = 'https://fortnite-public-api.theapinetwork.com/prod09/';
-  final String _apiKey = <API KEY HERE>;
+  final String _apiKey = <API KEY>;
   final http.Client _inner;
 
   _FortniteHttpClient(this._inner);
@@ -53,12 +53,12 @@ class ApiClient {
 
   Future<PlayerData> fetchPlayerData(
       FortniteUser user,
-      FortnitePlatform platform,
-      FortniteSeason season) async {
+      String platform,
+      String season) async {
     final json = await _client.apiGet('users/public/br_stats', {
       'user_id': user.uid,
-      'platform': platform.toString().split('.').last,
-      'season': season.toString().split('.').last
+      'platform': platform.toLowerCase(),
+      'window': season.toLowerCase()
     });
     return PlayerData.fromJson(json);
   }

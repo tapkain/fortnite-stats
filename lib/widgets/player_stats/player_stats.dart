@@ -17,9 +17,9 @@ class PlayerStatsView extends StatelessWidget {
         };
 
         if (model.state == PlayerDataModelState.loaded) {
-          return _buildPlayerDataWidget(context, model);
+          return _buildPlayerDataWidget(model);
         } else {
-          return _buildNoPlayerDataWidget(context, model);
+          return _buildNoPlayerDataWidget(model);
         }
       },
     );
@@ -36,12 +36,12 @@ class PlayerStatsView extends StatelessWidget {
     ];
   }
 
-  Widget _buildNoPlayerDataWidget(BuildContext context, PlayerDataModel model) {
+  Widget _buildNoPlayerDataWidget(PlayerDataModel model) {
     return Padding(
       padding: EdgeInsets.all(16),
       child: Column(
         children: <Widget>[
-          _buildSearch(context, model),
+          _buildSearch(model),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -55,15 +55,15 @@ class PlayerStatsView extends StatelessWidget {
     );
   }
 
-  Widget _buildPlayerDataWidget(BuildContext context, PlayerDataModel model) {
+  Widget _buildPlayerDataWidget(PlayerDataModel model) {
     return ListView(
       padding: EdgeInsets.all(16),
       children: <Widget>[
-        _buildSearch(context, model),
+        _buildSearch(model),
         SizedBox(
           height: 15,
         ),
-        PlayerStatsQuery(model.playerData),
+        PlayerStatsQuery(model),
         SizedBox(
           height: 15,
         ),
@@ -72,9 +72,9 @@ class PlayerStatsView extends StatelessWidget {
     );
   }
 
-  Search _buildSearch(BuildContext context, PlayerDataModel model) {
+  Search _buildSearch(PlayerDataModel model) {
     return Search((query) async {
       model.retrieveUser(query);
-    });
+    }, model);
   }
 }
