@@ -5,6 +5,7 @@ import 'package:fortnite_stats/model/fortnite_user.dart';
 import 'package:fortnite_stats/model/player_data.dart';
 import 'package:fortnite_stats/model/fortnite_news.dart';
 import 'package:fortnite_stats/model/fortnite_items.dart';
+import 'package:fortnite_stats/model/fortnite_top10.dart';
 
 class _FortniteHttpClient extends http.BaseClient {
   final String _baseUrl = 'https://fortnite-public-api.theapinetwork.com/prod09/';
@@ -77,5 +78,11 @@ class ApiClient {
     final url = itemsQuery == FortniteItemsQuery.current ? 'store/get' : 'upcoming/get';
     final json = await _client.apiGet(url, {'language': 'en'});
     return FortniteItems.fromJson(json);
+  }
+
+  Future<FortniteTop10> fetchTop10(String query) async {
+    final window = 'top_10_${query.toLowerCase()}';
+    final json = await _client.apiGet('leaderboards/get', {'window': window});
+    return FortniteTop10.fromJson(json);
   }
 }

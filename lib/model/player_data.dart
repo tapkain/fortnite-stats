@@ -5,18 +5,23 @@ enum PlayerStatsType {
 }
 
 class PlayerStats {
+  final String username;
   final int kills;
   final List<Tuple2<int, int>> placetop;
   final int matchesPlayed;
   final num kd;
   final num winrate;
+  final String wins;
   final int score;
   final int minutesPlayed;
   final int lastmodified;
+  final int rank;
+  final String platform;
 
   PlayerStats({
     this.kills, this.placetop, this.matchesPlayed, this.kd, this.winrate,
-    this.score, this.minutesPlayed, this.lastmodified
+    this.score, this.minutesPlayed, this.lastmodified, this.username, this.wins,
+    this.rank, this.platform
   });
 }
 
@@ -86,37 +91,6 @@ class AllPlayerStats {
             lastmodified: totals["lastupdate"]
         ),
       }
-    );
-  }
-}
-
-class PlayerStatsTotal {
-  final int kills;
-  final int wins;
-  final int matchesplayed;
-  final int minutesplayed;
-  final int hoursplayed;
-  final int score;
-  final num winrate;
-  final num kd;
-  final int lastupdate;
-
-  PlayerStatsTotal({
-    this.kills, this.wins, this.matchesplayed, this.minutesplayed,
-    this.hoursplayed, this.score, this.winrate, this.kd, this.lastupdate
-  });
-
-  factory PlayerStatsTotal.fromJson(Map<String, dynamic> json) {
-    return PlayerStatsTotal(
-      kills: json["kills"],
-      wins: json["wins"],
-      matchesplayed: json["matchesplayed"],
-      minutesplayed: json["minutesplayed"],
-      hoursplayed: json["hoursplayed"],
-      score: json["score"],
-      winrate: json["winrate"],
-      kd: json["kd"],
-      lastupdate: json["lastupdate"]
     );
   }
 }

@@ -22,6 +22,7 @@ dependencies:
   http: ^0.11.3+16
   tuple: ^1.0.2
   scoped_model: ^1.0.1
+  intl: ^0.15.7
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +47,9 @@ flutter:
     - assets/score.png
     - assets/wins.png
     - assets/anon.png
+    - assets/first_place.png
+    - assets/second_place.png
+    - assets/third_place.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

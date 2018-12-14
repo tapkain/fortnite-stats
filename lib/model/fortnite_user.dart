@@ -1,4 +1,4 @@
-enum FortnitePlatform { pc, xbox, ps4 }
+enum FortnitePlatform { pc, xb1, ps4 }
 enum FortniteGameType { savetheworld, battleroyale }
 enum FortniteSeason { alltime, season4, season5, season6, season7, current }
 

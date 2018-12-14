@@ -3,6 +3,7 @@ import 'package:fortnite_stats/widgets/news/news.dart';
 import 'package:fortnite_stats/widgets/player_stats/player_stats.dart';
 import 'package:fortnite_stats/util/api_client.dart';
 import 'package:fortnite_stats/widgets/items/items.dart';
+import 'package:fortnite_stats/widgets/top10/top10_list.dart';
 
 class HomeTabBar extends StatefulWidget {
   final _apiClient = ApiClient();
@@ -22,7 +23,7 @@ class _HomeTabBarState extends State<HomeTabBar> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           title: Text('Flutter Fortnite'),
@@ -37,16 +38,24 @@ class _HomeTabBarState extends State<HomeTabBar> {
           currentIndex: _currentIndex,
           items: [
             BottomNavigationBarItem(
-              icon: new Icon(Icons.attachment),
-              title: new Text('Stats'),
+              icon: Icon(Icons.attachment),
+              title: Text('Stats'),
+              backgroundColor: Theme.of(context).primaryColor,
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.mail),
-              title: new Text('News'),
+              icon: Icon(Icons.mail),
+              title: Text('News'),
+              backgroundColor: Theme.of(context).primaryColor,
             ),
             BottomNavigationBarItem(
-              icon: new Icon(Icons.access_alarm),
-              title: new Text('Items'),
+              icon: Icon(Icons.access_alarm),
+              title: Text('Items'),
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add),
+              title: Text('Top 10'),
+              backgroundColor: Theme.of(context).primaryColor,
             ),
           ],
         ),
@@ -64,6 +73,9 @@ class _HomeTabBarState extends State<HomeTabBar> {
         apiClient: _apiClient,
       ),
       FortniteItemsList(
+        apiClient: _apiClient,
+      ),
+      Top10List(
         apiClient: _apiClient,
       ),
     ][_currentIndex];

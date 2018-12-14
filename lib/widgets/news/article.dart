@@ -31,6 +31,17 @@ class ArticleWidget extends StatelessWidget {
               ],
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Text(
+                news.timeFormatted,
+                style: Theme.of(context).textTheme.subtitle.apply(color: Colors.grey),
+              ),
+              SizedBox(width: 16,)
+            ],
+          ),
+          SizedBox(height: 16,)
         ],
       ),
     );
