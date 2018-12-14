@@ -4,24 +4,32 @@ import 'package:fortnite_stats/widgets/player_stats/player_stats_query.dart';
 import 'package:fortnite_stats/widgets/player_stats/search.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:fortnite_stats/model/player_data_model.dart';
+import 'package:fortnite_stats/util/api_client.dart';
 
 class PlayerStatsView extends StatelessWidget {
+  ApiClient apiClient;
+
+  PlayerStatsView({this.apiClient});
+
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<PlayerDataModel>(
-      builder: (context, child, model) {
-        model.onError = () {
-          Scaffold.of(context).showSnackBar(
-            SnackBar(content: Text('We cannot find such user :(')),
-          );
-        };
+    return ScopedModel(
+      model: PlayerDataModel(apiClient: apiClient),
+      child: ScopedModelDescendant<PlayerDataModel>(
+        builder: (context, child, model) {
+          model.onError = () {
+            Scaffold.of(context).showSnackBar(
+              SnackBar(content: Text('We cannot find such user :(')),
+            );
+          };
 
-        if (model.state == PlayerDataModelState.loaded) {
-          return _buildPlayerDataWidget(model);
-        } else {
-          return _buildNoPlayerDataWidget(model);
-        }
-      },
+          if (model.state == PlayerDataModelState.loaded) {
+            return _buildPlayerDataWidget(model);
+          } else {
+            return _buildNoPlayerDataWidget(model);
+          }
+        },
+      ),
     );
   }
 

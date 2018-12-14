@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fortnite_stats/model/fortnite_news.dart';
 import 'package:fortnite_stats/util/api_client.dart';
 import 'package:fortnite_stats/model/fortnite_user.dart';
+import 'article.dart';
 
 class NewsList extends StatefulWidget {
   final ApiClient apiClient;
@@ -39,9 +40,14 @@ class _NewsListState extends State<NewsList>
   @override
   Widget build(BuildContext context) {
     if (_news == null) {
-      return CircularProgressIndicator();
+      return Container(
+        alignment: Alignment.center,
+        color: Colors.white,
+        child: CircularProgressIndicator(),
+      );
     } else {
       return Scaffold(
+        backgroundColor: Colors.white,
         body: Column(
           children: <Widget>[
             Padding(
@@ -107,36 +113,8 @@ class _NewsListState extends State<NewsList>
         itemCount: _news.news.length,
         itemBuilder: (context, index) {
           final news = _news.news[index];
-          return _buildArticle(context, news);
+          return ArticleWidget(news: news);
         },
-      ),
-    );
-  }
-
-  Widget _buildArticle(BuildContext context, FortniteNewsArticle news) {
-    return Card(
-      child: Column(
-        children: <Widget>[
-          Image.network(news.image),
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: <Widget>[
-                Text(
-                  news.title,
-                  style: Theme.of(context).textTheme.title,
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  news.body,
-                  style: Theme.of(context).textTheme.body1,
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

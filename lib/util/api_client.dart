@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:fortnite_stats/model/fortnite_user.dart';
 import 'package:fortnite_stats/model/player_data.dart';
 import 'package:fortnite_stats/model/fortnite_news.dart';
+import 'package:fortnite_stats/model/fortnite_items.dart';
 
 class _FortniteHttpClient extends http.BaseClient {
   final String _baseUrl = 'https://fortnite-public-api.theapinetwork.com/prod09/';
@@ -70,5 +71,11 @@ class ApiClient {
     // TODO: Add support for multiple languages
     final json = await _client.apiGet(url, {'language': 'en'});
     return FortniteNews.fromJson(json);
+  }
+
+  Future<FortniteItems> fetchStoreItems(FortniteItemsQuery itemsQuery) async {
+    final url = itemsQuery == FortniteItemsQuery.current ? 'store/get' : 'upcoming/get';
+    final json = await _client.apiGet(url, {'language': 'en'});
+    return FortniteItems.fromJson(json);
   }
 }
