@@ -1,7 +1,9 @@
 import 'package:http/http.dart' as http;
+import 'dart:io';
 import 'dart:convert';
 import 'package:fortnite_stats/model/fortnite_user.dart';
 import 'package:fortnite_stats/model/player_data.dart';
+import 'package:fortnite_stats/model/fortnite_news.dart';
 
 class _FortniteHttpClient extends http.BaseClient {
   final String _baseUrl = 'https://fortnite-public-api.theapinetwork.com/prod09/';
@@ -20,7 +22,7 @@ class _FortniteHttpClient extends http.BaseClient {
   }
 
   Future<http.StreamedResponse> send(http.BaseRequest request) {
-    request.headers['Authorization'] = _apiKey;
+    request.headers[HttpHeaders.authorizationHeader] = _apiKey;
     _log(request);
     return _inner.send(request);
   }
@@ -61,5 +63,12 @@ class ApiClient {
       'window': season.toLowerCase()
     });
     return PlayerData.fromJson(json);
+  }
+
+  Future<FortniteNews> fetchGameNews(FortniteGameType gameType) async {
+    final url = gameType == FortniteGameType.savetheworld ? 'stw_motd/get' : 'br_motd/get';
+    // TODO: Add support for multiple languages
+    final json = await _client.apiGet(url, {'language': 'en'});
+    return FortniteNews.fromJson(json);
   }
 }

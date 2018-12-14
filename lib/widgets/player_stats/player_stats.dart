@@ -37,7 +37,8 @@ class PlayerStatsView extends StatelessWidget {
   }
 
   Widget _buildNoPlayerDataWidget(PlayerDataModel model) {
-    return Padding(
+    return Container(
+      color: Colors.white,
       padding: EdgeInsets.all(16),
       child: Column(
         children: <Widget>[
@@ -56,19 +57,22 @@ class PlayerStatsView extends StatelessWidget {
   }
 
   Widget _buildPlayerDataWidget(PlayerDataModel model) {
-    return ListView(
-      padding: EdgeInsets.all(16),
-      children: <Widget>[
-        _buildSearch(model),
-        SizedBox(
-          height: 15,
-        ),
-        PlayerStatsQuery(model),
-        SizedBox(
-          height: 15,
-        ),
-        PlayerStatsCard(model.stats),
-      ],
+    return Container(
+      color: Colors.white,
+      child: ListView(
+        padding: EdgeInsets.all(16),
+        children: <Widget>[
+          _buildSearch(model),
+          SizedBox(
+            height: 15,
+          ),
+          PlayerStatsQuery(model),
+          SizedBox(
+            height: 15,
+          ),
+          PlayerStatsCard(model.stats),
+        ],
+      ),
     );
   }
 

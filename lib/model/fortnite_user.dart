@@ -1,10 +1,6 @@
-enum FortnitePlatform {
-  pc, xbox, ps4
-}
-
-enum FortniteSeason {
-  alltime, season4, season5, season6, season7, current
-}
+enum FortnitePlatform { pc, xbox, ps4 }
+enum FortniteGameType { savetheworld, battleroyale }
+enum FortniteSeason { alltime, season4, season5, season6, season7, current }
 
 class FortniteUser {
   final String uid;
@@ -19,7 +15,7 @@ class FortniteUser {
       uid: json['uid'],
       username: json['username'],
       platforms: new List<String>.from(json['platforms']),
-      seasons: new List<String>.from(json['seasons'])
+      seasons: new List<String>.from(json['seasons']),
     );
   }
 }

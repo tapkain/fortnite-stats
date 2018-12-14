@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 enum PlayerDataModelState { empty, loading, loaded }
 
 class PlayerDataModel extends Model {
-  final _apiClient = ApiClient();
+  final ApiClient apiClient;
   FortniteUser user;
   PlayerData playerData;
   var platform = FortnitePlatform.pc.toString().split('.').last.toUpperCase();
@@ -18,6 +18,8 @@ class PlayerDataModel extends Model {
   PlayerDataModelState state = PlayerDataModelState.empty;
   VoidCallback onError;
 
+  PlayerDataModel({this.apiClient});
+
   void retrieveUser(String username) async {
     if (username.trim().length == 0) {
       return;
@@ -27,7 +29,7 @@ class PlayerDataModel extends Model {
     notifyListeners();
 
     try {
-      user = await _apiClient.fetchUser(username);
+      user = await apiClient.fetchUser(username);
       update();
     } catch (exception) {
       state = PlayerDataModelState.empty;
@@ -44,7 +46,7 @@ class PlayerDataModel extends Model {
     }
 
     try {
-      playerData = await _apiClient.fetchPlayerData(user, platform, season);
+      playerData = await apiClient.fetchPlayerData(user, platform, season);
       state = PlayerDataModelState.loaded;
       notifyListeners();
     } catch (exception) {
